@@ -4,8 +4,11 @@ import { useEffect, useRef, useState } from "react";
 
 const SAPAAN = [
   "Halo! Selamat datang di Kumiko Shoppu!",
-  "Mau pesan boneka custom? 👋",
-  "Dijahit satu per satu pakai cinta!",
+  "Aku disini sebagai pajangan boneka flanel, lho! Tapi aku juga bisa menyapa kamu.",
+  "Kalau mau pesan boneka, klik tombol di pingir ya!",
+  "Aku bisa menyapa kamu dengan berbagai sapaan lucu.",
+  "Mau pesan boneka? 👋",
+  "Pemesanan bisa lewat link WhatsApp atau Shopee, lho! Klik tombol di pinggir ya!",
 ];
 
 export default function ChefKumiko() {

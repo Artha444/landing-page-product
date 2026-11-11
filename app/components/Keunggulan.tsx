@@ -3,7 +3,7 @@ import SectionHeader from "./SectionHeader";
 const KEUNGGULAN = [
   {
     title: "100% Handcrafted",
-    desc: "Dikerjakan dengan detail jahitan rapi dan bahan flanel premium, tanpa mesin — hanya tangan yang teliti.",
+    desc: "Dibuat hanya menggunakan kain flanel, dengan detail jahitan yang dikerjakan tangan secara teliti.",
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden>
         <path

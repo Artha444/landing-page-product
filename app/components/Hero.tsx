@@ -1,5 +1,6 @@
 import { waLink, WA_DEFAULT_MSG, SHOPEE_URL } from "../lib/links";
 import ChefKumiko from "./ChefKumiko";
+import { DollWisuda } from "./dolls";
 
 export default function Hero() {
   return (
@@ -17,11 +18,14 @@ export default function Hero() {
       />
 
       <div className="relative mx-auto grid w-full max-w-7xl items-center gap-8 px-5 py-12 sm:px-8 md:grid-cols-[1.05fr_.95fr] md:gap-4 md:py-10 lg:px-12">
-        <div className="fade-up z-10">
-          <p className="font-hand text-2xl text-sage-deep sm:text-3xl">
-            dibuat tangan, satu per satu
+        <div className="hero-enter-left z-10">
+          <p className="flex items-center gap-2 font-hand text-2xl text-sage-deep sm:text-3xl">
+            <span>dibuat tangan, satu per satu</span>
+            <span className="hero-doll-spin inline-flex shrink-0" aria-hidden="true">
+              <DollWisuda className="h-10 w-9" />
+            </span>
           </p>
-          <h1 className="mt-2 max-w-2xl text-4xl leading-[1.12] font-extrabold tracking-tight sm:text-5xl lg:text-6xl">
+          <h1 className="hero-title-wave mt-2 max-w-2xl text-4xl leading-[1.12] font-extrabold tracking-tight sm:text-5xl lg:text-6xl">
             Abadikan{" "}
             <span className="stitch-underline text-rose-deep">Momen Spesial</span>{" "}
             Lewat Boneka Flanel Custom Handcrafted
@@ -88,7 +92,7 @@ export default function Hero() {
           </ul>
         </div>
 
-        <div className="fade-up relative mx-auto flex w-full max-w-[34rem] items-center justify-center [animation-delay:150ms]">
+        <div className="hero-enter-left relative mx-auto flex w-full max-w-[34rem] items-center justify-center [animation-delay:180ms]">
           <div
             aria-hidden
             className="absolute inset-x-[8%] top-[12%] aspect-square rounded-full border border-white/80 bg-white/35 shadow-[0_35px_90px_-50px_rgba(192,96,102,0.6)]"

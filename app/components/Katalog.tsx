@@ -6,11 +6,13 @@ const KOLEKSI = [
   {
     name: "Koleksi Wisuda",
     handLabel: "selamat wisuda, sarjana!",
-    desc: "Toga, topi wisuda, dan tesis di tangan. Bisa dibuatkan wajah dan gaya rambut sesuai mahasiswanya.",
+    desc: "Boneka flanel bertema wisuda yang cocok untuk hadiah kelulusan, perpisahan, maupun ulang tahun. Cek pilihan model dan detail produk langsung di Shopee.",
     doll: <DollWisuda className="w-36 sm:w-40" />,
     tint: "bg-rose-soft/50",
+    shopeeUrl:
+      "https://shopee.co.id/Boneka-flanel-WISUDA-kado-wisuda-perpisahan-ulangtahun-BONWIS-Graduation-doll-i.29186828.1303389552?extraParams=%7B%22display_model_id%22%3A15638119697%2C%22model_selection_logic%22%3A3%7D&image_ids=id-11134207-7r98q-lnha7diha5c767",
     waMsg:
-      "Halo Kumiko Shoppu, saya ingin pesan boneka custom koleksi wisuda. Berikut detailnya:",
+      "Halo Kak, saya ingin pesan boneka koleksi wisuda. Berikut detailnya:",
   },
   {
     name: "Koleksi Profesi TNI/Polri",
@@ -19,7 +21,8 @@ const KOLEKSI = [
     doll: <DollPolisi className="w-36 sm:w-40" />,
     tint: "bg-sage-soft/60",
     waMsg:
-      "Halo Kumiko Shoppu, saya ingin pesan boneka custom profesi (Polisi/Brimob/Dokter). Berikut detailnya:",
+      "Halo Kak, saya ingin pesan boneka profesi (Polisi/Brimob/Dokter). Berikut detailnya:",
+    shopeeUrl: SHOPEE_URL,
   },
   {
     name: "Koleksi Pasangan/Anniversary",
@@ -28,13 +31,14 @@ const KOLEKSI = [
     doll: <DollPasangan className="w-36 sm:w-40" />,
     tint: "bg-card",
     waMsg:
-      "Halo Kumiko Shoppu, saya ingin pesan boneka custom pasangan/anniversary. Berikut detailnya:",
+      "Halo Kak, saya ingin pesan boneka pasangan/anniversary. Berikut detailnya:",
+    shopeeUrl: SHOPEE_URL,
   },
 ];
 
 const SPEK = [
   "Tinggi 15–20 cm",
-  "Flanel premium + akrilik / kotak mika",
+  "Bahan boneka: kain flanel",
   "Pre-order 2–4 hari kerja",
 ];
 
@@ -69,11 +73,16 @@ export default function Katalog() {
             </div>
             <div className="flex flex-1 flex-col p-6">
               <h3 className="text-lg font-bold">{item.name}</h3>
-              <p className="mt-2 text-sm leading-relaxed text-ink-soft">{item.desc}</p>
+              <p className="mt-2 text-sm leading-relaxed text-ink-soft">
+                {item.desc}
+              </p>
               <ul className="mt-4 space-y-1.5 border-t border-dashed border-thread pt-4 text-sm text-ink-soft">
                 {SPEK.map((s) => (
                   <li key={s} className="flex items-start gap-2">
-                    <span aria-hidden className="mt-1.5 size-1.5 shrink-0 rounded-full bg-rose" />
+                    <span
+                      aria-hidden
+                      className="mt-1.5 size-1.5 shrink-0 rounded-full bg-rose"
+                    />
                     {s}
                   </li>
                 ))}
@@ -81,7 +90,7 @@ export default function Katalog() {
               <div className="mt-6 flex flex-col gap-2.5 border-t border-dashed border-thread pt-5">
                 <a
                   className="btn btn-primary catalog-buy w-full"
-                  href={SHOPEE_URL}
+                  href={item.shopeeUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                 >

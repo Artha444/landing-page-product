@@ -30,10 +30,10 @@ function SetengahPita() {
 /** Pita momen berjalan terus; berhenti saat disentuh kursor. */
 export default function ThreadMarquee() {
   return (
-    <div className="relative overflow-hidden">
+    <div className="relative z-10 overflow-x-clip overflow-y-visible py-1">
       <div
         aria-hidden
-        className="marquee relative -mx-[1%] w-[102%] -rotate-1 border-y-2 border-dashed border-white/40 bg-rose-deep py-3"
+        className="marquee relative -mx-[2%] w-[104%] -rotate-1 border-y-2 border-dashed border-white/40 bg-rose-deep py-3"
       >
         <div className="marquee-track flex w-max">
           <SetengahPita />
