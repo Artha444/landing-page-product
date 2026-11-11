@@ -32,19 +32,27 @@ export default function CaraPesan() {
       <ol
         data-reveal
         data-reveal-stagger
-        className="relative mx-auto mt-14 grid max-w-6xl gap-10 md:grid-cols-4 md:gap-6"
+        className="relative mx-auto mt-20 grid max-w-6xl grid-cols-1 gap-x-5 gap-y-12 sm:grid-cols-2 md:mt-16 md:grid-cols-4 md:gap-5"
       >
-        {/* garis jahitan penghubung antar langkah */}
         <div
           aria-hidden
-          className="step-flow-line absolute top-0 right-[14%] left-[14%] hidden border-t-[3px] border-dashed border-sage/60 md:block"
+          className="step-flow-line absolute top-0 right-[12%] left-[12%] z-0 hidden border-t-2 border-dashed border-sage/60 md:block"
         />
-        {LANGKAH.map((langkah, i) => (
-          <li key={langkah.title} className="step-card group relative text-center md:text-left">
-            <span className="step-number relative z-10 grid size-11 place-items-center rounded-full border-2 border-sage-deep bg-cream font-hand text-2xl font-bold text-sage-deep transition duration-300 group-hover:-translate-y-1 group-hover:rotate-6 group-hover:bg-sage-deep group-hover:text-white group-focus-within:-translate-y-1">
-              {i + 1}
+        {LANGKAH.map((langkah, index) => (
+          <li
+            key={langkah.title}
+            className="step-card stitch-card group relative px-5 pb-6 pt-8 text-center"
+          >
+            <span
+              className={`step-number absolute -top-6 left-1/2 z-10 grid size-12 -translate-x-1/2 place-items-center rounded-full border-2 font-hand text-3xl font-bold shadow-sm transition duration-300 group-hover:-translate-y-1 group-hover:rotate-6 ${
+                index % 2 === 0
+                  ? "border-sage-deep bg-sage-soft text-sage-deep group-hover:bg-sage-deep group-hover:text-white"
+                  : "border-rose-deep bg-rose-soft text-rose-deep group-hover:bg-rose-deep group-hover:text-white"
+              }`}
+            >
+              {index + 1}
             </span>
-            <h3 className="mt-4 font-bold">{langkah.title}</h3>
+            <h3 className="mt-1 text-base font-bold text-ink">{langkah.title}</h3>
             <p className="mt-2 text-sm leading-relaxed text-ink-soft">{langkah.desc}</p>
           </li>
         ))}

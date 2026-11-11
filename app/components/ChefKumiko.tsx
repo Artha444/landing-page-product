@@ -1,9 +1,9 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 
 const SAPAAN = [
-  "Halo! Selamat datang di Kumiko Shoppu!",
+  "Halo, selamat datang di Kumiko Shoppu! Ada yang bisa aku bantu?",
   "Aku disini sebagai pajangan boneka flanel, lho! Tapi aku juga bisa menyapa kamu.",
   "Kalau mau pesan boneka, klik tombol di pingir ya!",
   "Aku bisa menyapa kamu dengan berbagai sapaan lucu.",
@@ -18,17 +18,9 @@ export default function ChefKumiko() {
   const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const jumpRef = useRef<SVGGElement>(null);
   const jumpAnimationRef = useRef<Animation | null>(null);
+  const hasInteractedRef = useRef(false);
 
-  useEffect(
-    () => () => {
-      if (timeoutRef.current) clearTimeout(timeoutRef.current);
-      jumpAnimationRef.current?.cancel();
-    },
-    [],
-  );
-
-  function sapa() {
-    const index = (sapaanIndex + 1) % SAPAAN.length;
+  const tampilkanSapaan = useCallback((index: number, duration = 2800) => {
     setSapaanIndex(index);
     setPesan(SAPAAN[index]);
     setBubbleKey((key) => key + 1);
@@ -46,8 +38,25 @@ export default function ChefKumiko() {
         { duration: 1200, easing: "cubic-bezier(0.22, 0.61, 0.36, 1)" },
       ) ?? null;
     if (timeoutRef.current) clearTimeout(timeoutRef.current);
-    timeoutRef.current = setTimeout(() => setPesan(""), 2800);
-  }
+    timeoutRef.current = setTimeout(() => setPesan(""), duration);
+  }, []);
+
+  const sapa = useCallback(() => {
+    hasInteractedRef.current = true;
+    tampilkanSapaan((sapaanIndex + 1) % SAPAAN.length);
+  }, [sapaanIndex, tampilkanSapaan]);
+
+  useEffect(() => {
+    const greetingTimeout = setTimeout(() => {
+      if (!hasInteractedRef.current) tampilkanSapaan(0, 4500);
+    }, 800);
+
+    return () => {
+      clearTimeout(greetingTimeout);
+      if (timeoutRef.current) clearTimeout(timeoutRef.current);
+      jumpAnimationRef.current?.cancel();
+    };
+  }, [tampilkanSapaan]);
 
   return (
     <div className="chef-kumiko-stage">
