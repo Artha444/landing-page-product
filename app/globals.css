@@ -1,0 +1,573 @@
+@import "tailwindcss";
+
+@theme inline {
+  /* Palet brand Kumiko_Shoppu */
+  --color-cream: #fdfbf7;
+  --color-card: #fffdf9;
+  --color-ink: #2c2c2c;
+  --color-ink-soft: #6e675f;
+  --color-rose: #e8999c;
+  --color-rose-deep: #c06066;
+  --color-rose-soft: #f7dedf;
+  --color-sage: #9caf88;
+  --color-sage-deep: #71855f;
+  --color-sage-soft: #e7eddf;
+  --color-thread: #e9d8cc;
+
+  --font-sans: var(--font-jakarta), "Plus Jakarta Sans", system-ui, sans-serif;
+  --font-hand: var(--font-caveat), cursive;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-cream font-sans text-ink antialiased;
+}
+
+[id] {
+  scroll-margin-top: 5.5rem;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-rose-deep);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* ---- Tombol dengan jahitan (garis putus-putus di dalam tepi) ---- */
+.btn {
+  @apply inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-semibold transition duration-200 ease-out;
+}
+.btn:hover {
+  transform: translateY(-2px);
+}
+.btn:active {
+  transform: translateY(0);
+}
+.btn-primary {
+  @apply bg-rose-deep text-white;
+  outline: 2px dashed rgba(255, 251, 245, 0.9);
+  outline-offset: -6px;
+}
+.btn-primary:hover {
+  box-shadow: 0 12px 22px -10px rgba(192, 96, 102, 0.55);
+}
+.btn-secondary {
+  @apply border border-thread bg-white text-ink;
+  outline: 2px dashed var(--color-rose);
+  outline-offset: -6px;
+}
+.btn-secondary:hover {
+  box-shadow: 0 12px 22px -10px rgba(44, 44, 44, 0.18);
+}
+.btn-sage {
+  @apply bg-sage-deep text-white;
+  outline: 2px dashed rgba(255, 251, 245, 0.85);
+  outline-offset: -6px;
+}
+.btn-sage:hover {
+  box-shadow: 0 12px 22px -10px rgba(113, 133, 95, 0.55);
+}
+
+/* Chip pemilih varian boneka */
+.chip {
+  @apply inline-flex items-center rounded-full border px-4 py-1.5 text-sm font-semibold transition duration-200;
+}
+.chip-aktif {
+  @apply border-rose-deep bg-rose-deep text-white;
+  outline: 2px dashed rgba(255, 251, 245, 0.9);
+  outline-offset: -5px;
+}
+.chip-idle {
+  @apply border-thread bg-white text-ink-soft hover:border-rose hover:text-ink;
+}
+
+/* ---- Kartu dengan bingkai jahitan ---- */
+.stitch-card {
+  @apply relative rounded-3xl border border-thread bg-card;
+}
+.stitch-card::after {
+  content: "";
+  position: absolute;
+  inset: 8px;
+  border: 1.5px dashed color-mix(in srgb, var(--color-rose) 45%, transparent);
+  border-radius: 1.1rem;
+  pointer-events: none;
+}
+
+/* Garis putus-putus tebal (jahitan) di bawah teks */
+.stitch-underline {
+  position: relative;
+  padding-bottom: 0.35rem;
+}
+.stitch-underline::after {
+  content: "";
+  position: absolute;
+  left: 2px;
+  bottom: -2px;
+  width: calc(100% - 4px);
+  border-bottom: 4px dashed var(--color-rose);
+  border-radius: 2px;
+}
+
+/* Tekstur flanel tipis (motif kotak) untuk latar khusus */
+.flannel-plaid {
+  background-image: repeating-linear-gradient(
+      0deg,
+      rgba(192, 96, 102, 0.08) 0 1px,
+      transparent 1px 14px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      rgba(192, 96, 102, 0.08) 0 1px,
+      transparent 1px 14px
+    );
+}
+
+/* ---- Animasi masuk saat halaman dibuka (hero) ---- */
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+.fade-up {
+  animation: fade-up 0.7s ease-out both;
+}
+
+/* ---- Scroll reveal: elemen muncul halus saat di-scroll ----
+   Satu komponen klien (RevealObserver) menandai [data-reveal]. */
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(26px);
+  transition:
+    opacity 0.7s cubic-bezier(0.22, 0.61, 0.36, 1),
+    transform 0.7s cubic-bezier(0.22, 0.61, 0.36, 1);
+  will-change: opacity, transform;
+}
+[data-reveal].is-visible {
+  opacity: 1;
+  transform: none;
+}
+[data-reveal][data-reveal-stagger] > * {
+  opacity: 0;
+  transform: translateY(18px);
+  transition:
+    opacity 0.55s ease-out,
+    transform 0.55s ease-out;
+}
+[data-reveal][data-reveal-stagger].is-visible > * {
+  opacity: 1;
+  transform: none;
+}
+[data-reveal-stagger].is-visible > :nth-child(1) {
+  transition-delay: 0.04s;
+}
+[data-reveal-stagger].is-visible > :nth-child(2) {
+  transition-delay: 0.12s;
+}
+[data-reveal-stagger].is-visible > :nth-child(3) {
+  transition-delay: 0.2s;
+}
+[data-reveal-stagger].is-visible > :nth-child(4) {
+  transition-delay: 0.28s;
+}
+
+/* Melayang lembut untuk badge mengambang */
+@keyframes float-y {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+.float-slow {
+  animation: float-y 5s ease-in-out infinite;
+}
+
+/* Pita berjalan (marquee) */
+@keyframes marquee-x {
+  to {
+    transform: translateX(-50%);
+  }
+}
+.marquee-track {
+  animation: marquee-x 26s linear infinite;
+}
+.marquee:hover .marquee-track {
+  animation-play-state: paused;
+}
+
+/* Pop kesukuan saat boneka berganti varian */
+@keyframes pop-in {
+  from {
+    opacity: 0;
+    transform: scale(0.92) translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+.pop-in {
+  animation: pop-in 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+.section-eyebrow {
+  display: inline-block;
+}
+.section-eyebrow::after {
+  display: block;
+  width: 0;
+  margin: 0.05rem auto 0;
+  border-bottom: 2px dashed color-mix(in srgb, var(--color-rose-deep) 60%, transparent);
+  content: "";
+  transition: width 550ms cubic-bezier(0.22, 0.61, 0.36, 1) 180ms;
+}
+.section-heading.is-visible .section-eyebrow::after {
+  width: 2.5rem;
+}
+.section-heading.is-visible .section-title {
+  animation: heading-arrive 650ms cubic-bezier(0.22, 0.61, 0.36, 1) both;
+}
+@keyframes heading-arrive {
+  from { opacity: 0.6; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.header-nav-link {
+  position: relative;
+}
+.header-nav-link::after {
+  position: absolute;
+  right: 1rem;
+  bottom: 0.28rem;
+  left: 1rem;
+  height: 1px;
+  background: var(--color-rose-deep);
+  content: "";
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 220ms ease-out;
+}
+.header-nav-link:hover::after,
+.header-nav-link:focus-visible::after {
+  transform: scaleX(1);
+}
+
+.feature-card,
+.catalog-card,
+.testimonial-card {
+  transform-style: preserve-3d;
+}
+.feature-card .feature-icon {
+  box-shadow: 0 0 0 0 rgba(192, 96, 102, 0);
+}
+.feature-card:hover .feature-icon,
+.feature-card:focus-within .feature-icon {
+  box-shadow: 0 0 0 6px rgba(232, 153, 156, 0.15);
+}
+.catalog-doll {
+  animation: catalog-float 4s ease-in-out infinite;
+  animation-play-state: paused;
+}
+.is-visible .catalog-doll {
+  animation-play-state: running;
+}
+.catalog-card:nth-child(2) .catalog-doll {
+  animation-delay: -1.3s;
+}
+.catalog-card:nth-child(3) .catalog-doll {
+  animation-delay: -2.6s;
+}
+.catalog-card:hover .catalog-doll,
+.catalog-card:focus-within .catalog-doll {
+  animation-play-state: paused;
+}
+@keyframes catalog-float {
+  0%, 100% { translate: 0 0; }
+  50% { translate: 0 -7px; }
+}
+.catalog-caption {
+  transition: transform 220ms ease-out;
+}
+.catalog-card:hover .catalog-caption {
+  transform: rotate(-4deg) translateY(-2px);
+}
+.catalog-custom-link {
+  transition: color 180ms ease-out;
+}
+.catalog-custom-link:hover {
+  color: var(--color-rose-deep);
+}
+
+.step-flow-line {
+  transform: scaleX(0);
+  transform-origin: left;
+}
+.is-visible .step-flow-line {
+  animation: stitch-line 1.2s cubic-bezier(0.22, 0.61, 0.36, 1) 180ms forwards;
+}
+.step-card {
+  transition: transform 220ms ease-out;
+}
+.step-card:hover,
+.step-card:focus-within {
+  transform: translateY(-3px);
+}
+@keyframes stitch-line {
+  to { transform: scaleX(1); }
+}
+
+.review-star {
+  transform-origin: center;
+  animation: star-glint 3.2s ease-in-out infinite;
+  animation-play-state: paused;
+}
+.is-visible .review-star {
+  animation-play-state: running;
+}
+.review-star:nth-child(2) { animation-delay: 180ms; }
+.review-star:nth-child(3) { animation-delay: 360ms; }
+.review-star:nth-child(4) { animation-delay: 540ms; }
+.review-star:nth-child(5) { animation-delay: 720ms; }
+@keyframes star-glint {
+  0%, 82%, 100% { transform: scale(1) rotate(0); }
+  88% { transform: scale(1.22) rotate(-8deg); }
+  94% { transform: scale(1) rotate(6deg); }
+}
+.testimonial-card:hover .review-star {
+  animation-duration: 1.2s;
+}
+
+.cta-card::before {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 50% 120%, rgba(232, 153, 156, 0.28), transparent 58%);
+  content: "";
+  pointer-events: none;
+}
+.cta-thread {
+  position: absolute;
+  z-index: 1;
+  width: 2.5rem;
+  height: 2.5rem;
+  border: 2px dashed rgba(192, 96, 102, 0.35);
+  border-radius: 50%;
+  pointer-events: none;
+  animation-play-state: paused;
+}
+.cta-thread-one {
+  top: 1.5rem;
+  left: 1.5rem;
+  animation: thread-drift 6s ease-in-out infinite;
+}
+.cta-thread-two {
+  right: 1.5rem;
+  bottom: 1.5rem;
+  width: 1.5rem;
+  height: 1.5rem;
+  border-color: rgba(113, 133, 95, 0.45);
+  animation: thread-drift 5s ease-in-out -1.5s infinite reverse;
+}
+.cta-card:not(.is-visible) .cta-thread {
+  animation-play-state: paused;
+}
+.cta-card.is-visible .cta-thread {
+  animation-play-state: running;
+}
+@keyframes thread-drift {
+  0%, 100% { transform: translateY(0) rotate(0); }
+  50% { transform: translateY(-10px) rotate(18deg); }
+}
+.footer-link {
+  transition: color 180ms ease-out, transform 180ms ease-out;
+}
+.footer-link:hover {
+  transform: translateX(3px);
+}
+
+.chef-kumiko {
+  position: relative;
+  z-index: 1;
+  display: block;
+  width: min(100%, 27rem);
+  max-height: min(76svh, 38rem);
+  overflow: visible;
+  filter: drop-shadow(0 18px 16px rgba(44, 44, 44, 0.12));
+}
+.chef-kumiko-stage {
+  position: relative;
+  width: 100%;
+}
+.chef-kumiko-button {
+  display: grid;
+  width: 100%;
+  place-items: center;
+  border: 0;
+  padding: 0;
+  background: transparent;
+  cursor: pointer;
+}
+.chef-kumiko-button:focus-visible {
+  border-radius: 1.5rem;
+  outline: 3px solid var(--color-rose-deep);
+  outline-offset: 4px;
+}
+.chef-jump {
+  transform-box: view-box;
+  transform-origin: 200px 548px;
+}
+.chef-speech-bubble {
+  position: absolute;
+  top: 10%;
+  right: 2%;
+  z-index: 2;
+  max-width: 13rem;
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  border-radius: 1.25rem 1.25rem 1.25rem 0.3rem;
+  padding: 0.65rem 1rem;
+  background: white;
+  color: var(--color-rose-deep);
+  font-size: 0.9rem;
+  font-weight: 700;
+  line-height: 1.4;
+  box-shadow: 0 8px 20px rgba(44, 44, 44, 0.12);
+  opacity: 0;
+  pointer-events: none;
+  transform: scale(0.7);
+  transform-origin: bottom left;
+}
+.chef-speech-bubble::after {
+  position: absolute;
+  bottom: -7px;
+  left: 1rem;
+  width: 14px;
+  height: 14px;
+  border-right: 1px solid rgba(255, 255, 255, 0.8);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.8);
+  background: white;
+  content: "";
+  transform: rotate(45deg);
+}
+.chef-speech-bubble.is-visible {
+  opacity: 1;
+  animation: chef-bubble-jiggle 650ms cubic-bezier(0.22, 0.8, 0.3, 1) both;
+}
+@keyframes chef-bubble-jiggle {
+  0% { opacity: 0; transform: scale(0.7) rotate(-5deg); }
+  45% { opacity: 1; transform: scale(1.08) rotate(3deg); }
+  65% { transform: scale(0.96) rotate(-2deg); }
+  82% { transform: scale(1.02) rotate(1deg); }
+  100% { opacity: 1; transform: scale(1) rotate(0); }
+}
+.chef-body {
+  transform-origin: 200px 548px;
+  animation: chef-breathe 3.4s ease-in-out infinite;
+}
+.chef-head {
+  transform-origin: 200px 282px;
+  animation: chef-nod 4s ease-in-out infinite alternate;
+}
+.chef-hat {
+  transform-origin: 200px 162px;
+  animation: chef-hat-sway 2.6s ease-in-out infinite alternate;
+}
+.chef-wave-arm {
+  transform-origin: 152px 306px;
+  animation: chef-wave 0.9s ease-in-out infinite alternate;
+}
+.chef-wave-forearm {
+  transform-origin: 152px 364px;
+  animation: chef-forearm 0.45s ease-in-out infinite alternate;
+}
+.chef-wave-hand {
+  transform-origin: 152px 412px;
+  animation: chef-hand 0.45s ease-in-out infinite alternate;
+}
+.chef-rest-arm {
+  transform-origin: 252px 306px;
+  animation: chef-rest 3.4s ease-in-out infinite alternate;
+}
+.chef-eyes {
+  transform-origin: 200px 218px;
+  animation: chef-blink 4.6s infinite;
+}
+.chef-wave-lines {
+  animation: chef-wave-lines 0.45s ease-in-out infinite alternate;
+}
+@keyframes chef-breathe {
+  50% { transform: scale(1.008, 1.016); }
+}
+@keyframes chef-nod {
+  from { transform: rotate(-1.6deg); }
+  to { transform: rotate(2deg) translateY(-1px); }
+}
+@keyframes chef-hat-sway {
+  from { transform: rotate(-1.5deg); }
+  to { transform: rotate(2.4deg); }
+}
+@keyframes chef-wave {
+  from { transform: rotate(112deg); }
+  to { transform: rotate(124deg); }
+}
+@keyframes chef-forearm {
+  from { transform: rotate(20deg); }
+  to { transform: rotate(56deg); }
+}
+@keyframes chef-hand {
+  from { transform: rotate(-12deg); }
+  to { transform: rotate(12deg); }
+}
+@keyframes chef-rest {
+  from { transform: rotate(1.5deg); }
+  to { transform: rotate(-2deg); }
+}
+@keyframes chef-blink {
+  0%, 93%, 100% { transform: scaleY(1); }
+  96% { transform: scaleY(0.08); }
+}
+@keyframes chef-wave-lines {
+  from { opacity: 0.05; }
+  to { opacity: 0.9; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+  /* Reveal langsung tampil tanpa animasi */
+  [data-reveal],
+  [data-reveal] > * {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+  .float-slow,
+  .marquee-track {
+    animation: none !important;
+  }
+  .chef-kumiko *,
+  .chef-kumiko {
+    animation: none !important;
+  }
+  .chef-speech-bubble.is-visible {
+    animation: none !important;
+    opacity: 1;
+    transform: none;
+  }
+}

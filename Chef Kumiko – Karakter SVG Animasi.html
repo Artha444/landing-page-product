@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Chef Kumiko – Karakter SVG Animasi</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bagel+Fat+One&family=Fredoka:wght@500;600&family=Nunito:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#FDFBF7;--surface:#fff;--ink:#2C2C2C;--muted:#625c56;--rose:#E8999C;--rose-bg:#fbe6e6;--sage:#9CAF88;--line:#eadfd0;--stitch:rgba(44,44,44,.35);box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#1e1b19;--surface:#2a2623;--ink:#f4efe9;--muted:#bbb2a8;--rose-bg:#432c2d;--line:#3d3631;--stitch:rgba(255,255,255,.35);color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#1e1b19;--surface:#2a2623;--ink:#f4efe9;--muted:#bbb2a8;--rose-bg:#432c2d;--line:#3d3631;--stitch:rgba(255,255,255,.35);color-scheme:dark}
+*,*::before,*::after{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--bg);color:var(--ink);font:400 16px/1.6 Nunito,system-ui,sans-serif;min-height:100%;padding:28px 18px 40px}
+.wrap{max-width:760px;margin:0 auto}
+h1{font:400 clamp(2rem,7vw,3.2rem)/1.1 "Bagel Fat One",Fredoka,system-ui,sans-serif;margin:0 0 6px}
+.sub{color:var(--muted);margin:0 0 22px}
+.stage{position:relative;border-radius:44px;background:radial-gradient(circle at 50% 42%,#f7c7ca 0,#E8999C 70%);padding:30px 10px 6px;outline:3px dashed rgba(44,44,44,.3);outline-offset:-14px;overflow:hidden;cursor:pointer;-webkit-tap-highlight-color:transparent}
+@media (prefers-color-scheme:dark){.stage{background:radial-gradient(circle at 50% 42%,#7a4a4d 0,#4a2f31 75%)}}
+.fig{display:block;margin:0 auto;height:min(68vh,560px);transition:transform .5s cubic-bezier(.3,1.4,.5,1)}
+.fig svg{height:100%;width:auto;display:block;margin:0 auto}
+.flip .fig{transform:scaleX(-1)}
+.bub{position:absolute;top:26px;left:20px;max-width:200px;background:var(--surface);color:var(--ink);padding:10px 16px;border-radius:22px 22px 22px 4px;font-weight:700;line-height:1.35;box-shadow:0 8px 20px rgba(0,0,0,.15);transform:scale(0);transform-origin:bottom left;transition:transform .3s cubic-bezier(.3,1.6,.5,1);pointer-events:none;z-index:2}
+.bub.show{transform:scale(1)}
+.flip .bub{left:auto;right:20px;border-radius:22px 22px 4px 22px;transform-origin:bottom right}
+.ctl{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-top:20px}
+.btn{position:relative;min-height:46px;padding:0 20px;border-radius:999px;border:0;background:var(--rose);color:#2C2C2C;font:600 .95rem Fredoka;cursor:pointer;transition:transform .2s}
+.btn::after{content:"";position:absolute;inset:3px;border-radius:999px;border:2px dashed rgba(44,44,44,.4);pointer-events:none}
+.btn:hover{transform:translateY(-2px)}.btn:active{transform:scale(.96)}
+.btn.s{background:var(--sage)}.btn[aria-pressed="true"]{background:var(--ink);color:var(--bg)}.btn[aria-pressed="true"]::after{border-color:rgba(255,255,255,.4)}
+:focus-visible{outline:3px solid var(--rose);outline-offset:3px}
+label.sp{display:flex;align-items:center;gap:10px;background:var(--surface);border:2px solid var(--line);border-radius:999px;padding:6px 16px;font:600 .9rem Fredoka;flex:1 1 230px}
+input[type=range]{flex:1;accent-color:#E8999C;min-width:90px}
+.note{font-size:.85rem;color:var(--muted);margin-top:18px}
+code{background:var(--rose-bg);padding:1px 7px;border-radius:6px;font-size:.85em}
+@media (prefers-reduced-motion:reduce){.fig,.bub{transition:none}}
+</style>
+</head>
+<body>
+<div class="wrap" id="app">
+<h1>Chef Kumiko</h1>
+<p class="sub">Karakter boneka flanel berbentuk SVG. Berdiri tegak, tangan melambai ke depan. Sentuh karakternya untuk menyapa.</p>
+<div class="stage" id="stage" role="button" tabindex="0" aria-label="Sentuh untuk menyapa">
+<div class="bub" id="bub" role="status"></div>
+<div class="fig">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 600" class="k" role="img" aria-labelledby="kt">
+<title id="kt">Boneka flanel chef berdiri sambil melambaikan tangan</title>
+<style>
+.k{--spd:1;overflow:visible}
+.k-j{display:none;fill:#e0505a;stroke:#fff;stroke-width:2}.k-dbg .k-j{display:inline}
+.k-jump{transform-origin:200px 548px}.k-jump.hop{animation:kj .7s cubic-bezier(.3,1.2,.5,1)}
+@keyframes kj{30%{transform:translateY(-28px) scale(.98,1.04)}55%{transform:scale(1.05,.93)}78%{transform:scale(.99,1.01)}}
+.k-body{transform-origin:200px 548px;animation:kb calc(3.4s/var(--spd)) ease-in-out infinite}
+@keyframes kb{50%{transform:scale(1.008,1.016)}}
+.k-head{transform-origin:200px 282px;animation:kh calc(4s/var(--spd)) ease-in-out infinite alternate}
+@keyframes kh{from{transform:rotate(-1.6deg)}to{transform:rotate(2deg) translateY(-1px)}}
+.k-hat{transform-origin:200px 162px;animation:kt calc(2.6s/var(--spd)) ease-in-out infinite alternate}
+@keyframes kt{from{transform:rotate(-1.5deg)}to{transform:rotate(2.4deg)}}
+.k-up{transform-origin:152px 306px;transform:rotate(118deg);animation:ku calc(.9s/var(--spd)) ease-in-out infinite alternate}
+@keyframes ku{from{transform:rotate(112deg)}to{transform:rotate(124deg)}}
+.k-fo{transform-origin:152px 364px;animation:kf calc(.45s/var(--spd)) ease-in-out infinite alternate}
+@keyframes kf{from{transform:rotate(20deg)}to{transform:rotate(56deg)}}
+.k-hd{transform-origin:152px 412px;animation:kw calc(.45s/var(--spd)) ease-in-out infinite alternate}
+@keyframes kw{from{transform:rotate(-12deg)}to{transform:rotate(12deg)}}
+.k-ar{transform-origin:252px 306px;animation:ka calc(3.4s/var(--spd)) ease-in-out infinite alternate}
+@keyframes ka{from{transform:rotate(1.5deg)}to{transform:rotate(-2deg)}}
+.k-eyes{transform-origin:200px 218px;animation:ke 4.6s infinite}
+@keyframes ke{0%,93%,100%{transform:scaleY(1)}96%{transform:scaleY(.08)}}
+.k-ln{animation:kl calc(.45s/var(--spd)) ease-in-out infinite alternate}
+@keyframes kl{from{opacity:.05}to{opacity:.9}}
+.k-still .k-up,.k-still .k-fo,.k-still .k-hd,.k-still .k-ln{animation-play-state:paused}
+@media (prefers-reduced-motion:reduce){.k *{animation:none!important}}
+</style>
+<defs>
+<linearGradient id="kw" x1="0" x2="1"><stop offset="0" stop-color="#fff"/><stop offset=".6" stop-color="#f8f8fa"/><stop offset="1" stop-color="#e2e2e9"/></linearGradient>
+<radialGradient id="ks" cx=".4" cy=".35" r=".8"><stop offset="0" stop-color="#fde6cb"/><stop offset="1" stop-color="#f1c097"/></radialGradient>
+</defs>
+
+<ellipse cx="200" cy="574" rx="172" ry="22" fill="#f4c6ca"/>
+<ellipse cx="200" cy="567" rx="152" ry="16" fill="#fbe3e4" stroke="#fff" stroke-width="3" stroke-dasharray="6 6"/>
+<ellipse cx="200" cy="560" rx="96" ry="11" fill="#000" opacity=".14"/>
+
+<g class="k-jump"><g class="k-body">
+<!-- kaki -->
+<g fill="#1f1f23"><rect x="146" y="372" width="52" height="170" rx="24"/><rect x="202" y="372" width="52" height="170" rx="24"/><ellipse cx="154" cy="546" rx="35" ry="15"/><ellipse cx="246" cy="546" rx="35" ry="15"/></g>
+<path d="M172 404v112M228 404v112" stroke="#4a4a52" stroke-width="2" stroke-dasharray="5 5"/>
+
+<!-- tangan kiri (turun) -->
+<g class="k-ar"><path d="M252 312L270 372" stroke="#fbfbfd" stroke-width="30" stroke-linecap="round" fill="none"/><path d="M262 316L278 368" stroke="#e1e1e9" stroke-width="6" stroke-linecap="round" opacity=".7" fill="none"/><circle cx="272" cy="388" r="15" fill="url(#ks)"/></g>
+
+<!-- tangan kanan (melambai) -->
+<g class="k-up">
+<path d="M152 306V364" stroke="#fbfbfd" stroke-width="30" stroke-linecap="round" fill="none"/><path d="M163 310V358" stroke="#e1e1e9" stroke-width="5" stroke-linecap="round" opacity=".7" fill="none"/>
+<g class="k-fo">
+<path d="M152 364V412" stroke="#fbfbfd" stroke-width="28" stroke-linecap="round" fill="none"/><path d="M162 368V408" stroke="#e1e1e9" stroke-width="5" stroke-linecap="round" opacity=".7" fill="none"/>
+<g class="k-hd"><ellipse cx="134" cy="424" rx="6" ry="10" fill="url(#ks)" transform="rotate(25 134 424)"/><circle cx="152" cy="426" r="15" fill="url(#ks)"/><path d="M146 430q6 4 12 0" stroke="#e3a37f" stroke-width="2" stroke-linecap="round" fill="none"/><circle class="k-j" cx="152" cy="412" r="5"/></g>
+<circle class="k-j" cx="152" cy="364" r="5"/>
+</g></g>
+<circle class="k-j" cx="152" cy="306" r="5"/>
+<g class="k-ln" fill="none" stroke="#b4545a" stroke-width="3.5" stroke-linecap="round"><path d="M44 206q-12 14-2 32"/><path d="M28 198q-18 22-4 48"/></g>
+
+<!-- badan -->
+<rect x="184" y="260" width="32" height="40" fill="#f1c097"/>
+<path d="M146 296Q138 332 140 374Q142 410 176 412H224Q258 410 260 374Q262 332 254 296Q200 282 146 296Z" fill="url(#kw)"/>
+<path d="M238 304Q258 334 253 382" stroke="#dcdce4" stroke-width="8" stroke-linecap="round" opacity=".6" fill="none"/>
+<path d="M150 394Q200 410 250 394" stroke="#c4c4cd" stroke-width="2" stroke-dasharray="5 5" fill="none"/>
+<path d="M190 306Q177 332 184 406" stroke="#1d1d20" stroke-width="6" stroke-linecap="round" fill="none"/>
+<g fill="#26262a"><circle cx="210" cy="326" r="4"/><circle cx="234" cy="326" r="4"/><circle cx="210" cy="346" r="4"/><circle cx="234" cy="346" r="4"/><circle cx="210" cy="366" r="4"/><circle cx="234" cy="366" r="4"/><circle cx="210" cy="386" r="4"/><circle cx="234" cy="386" r="4"/></g>
+<g fill="#fff" opacity=".8"><circle cx="209" cy="325" r="1.2"/><circle cx="233" cy="325" r="1.2"/><circle cx="209" cy="345" r="1.2"/><circle cx="233" cy="345" r="1.2"/><circle cx="209" cy="365" r="1.2"/><circle cx="233" cy="365" r="1.2"/><circle cx="209" cy="385" r="1.2"/><circle cx="233" cy="385" r="1.2"/></g>
+<path d="M166 290Q200 312 234 290L238 301Q200 326 162 301Z" fill="#1d1d20"/>
+
+<!-- kepala -->
+<g class="k-head">
+<circle cx="125" cy="220" r="14" fill="url(#ks)"/><circle cx="275" cy="220" r="14" fill="url(#ks)"/>
+<circle cx="125" cy="220" r="6" fill="#efae8a"/><circle cx="275" cy="220" r="6" fill="#efae8a"/>
+<path d="M128 170Q112 198 124 228Q136 216 140 188Z" fill="#1d1d20"/><path d="M272 170Q288 198 276 228Q264 216 260 188Z" fill="#1d1d20"/>
+<ellipse cx="200" cy="210" rx="76" ry="70" fill="url(#ks)"/>
+<path d="M128 186Q122 150 156 140H244Q278 150 272 186Q258 166 236 164Q216 176 194 166Q170 160 156 170Q138 174 128 186Z" fill="#1d1d20"/>
+<g class="k-eyes"><circle cx="166" cy="218" r="8.5" fill="#1b1b1e"/><circle cx="234" cy="218" r="8.5" fill="#1b1b1e"/><circle cx="169.5" cy="214.5" r="3.2" fill="#fff"/><circle cx="237.5" cy="214.5" r="3.2" fill="#fff"/><circle cx="162.5" cy="221.5" r="1.4" fill="#fff"/><circle cx="230.5" cy="221.5" r="1.4" fill="#fff"/></g>
+<ellipse cx="146" cy="240" rx="17" ry="11" fill="#f4a08c" opacity=".8"/><ellipse cx="254" cy="240" rx="17" ry="11" fill="#f4a08c" opacity=".8"/>
+<path d="M197 232q3 3 6 0" stroke="#e39a7a" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+<path d="M188 247Q200 259 212 247" stroke="#d9695f" stroke-width="3.5" stroke-linecap="round" fill="none"/>
+<g class="k-hat">
+<path d="M120 166Q118 144 148 136Q178 110 190 68Q198 38 214 14Q220 12 220 20Q224 54 236 86Q252 122 268 138Q284 148 280 166Q200 182 120 166Z" fill="url(#kw)"/>
+<path d="M214 26Q206 82 180 128" stroke="#d2d2db" stroke-width="2.5" stroke-dasharray="5 5" fill="none"/>
+<path d="M124 162Q200 180 276 162" stroke="#d2d2db" stroke-width="3" fill="none"/>
+<path d="M130 156Q200 172 270 156" stroke="#c4c4cd" stroke-width="2" stroke-dasharray="5 5" fill="none"/>
+</g>
+</g>
+</g></g>
+</svg>
+
+</div>
+</div>
+<div class="ctl">
+<button class="btn" type="button" id="tg" aria-pressed="false">⏸ Hentikan lambaian</button>
+<button class="btn s" type="button" id="hp">Lompat</button>
+<button class="btn s" type="button" id="fl" aria-pressed="false">Ganti tangan</button>
+<button class="btn s" type="button" id="db" aria-pressed="false">Tampilkan sendi</button>
+<label class="sp">Kecepatan <input type="range" id="sp" min=".5" max="2.5" step=".1" value="1"></label>
+</div>
+<p class="note">Setiap bagian punya kelas sendiri (<code>.k-up</code> lengan atas, <code>.k-fo</code> lengan bawah, <code>.k-hd</code> telapak, <code>.k-head</code>, <code>.k-hat</code>, <code>.k-eyes</code>) sehingga mudah dianimasikan ulang. Berkas SVG mandiri dilampirkan terpisah.</p>
+</div>
+<script>
+var svg=document.querySelector("svg.k"),app=document.getElementById("app"),jump=svg.querySelector(".k-jump"),bub=document.getElementById("bub"),bt,mi=0;
+var MSG=["Halo! 👋","Selamat datang di Kumiko_Shoppu!","Mau pesan boneka custom? 🧵","Hihi, geli! 😆","Dijahit satu per satu pakai cinta 💖"];
+function hop(){jump.classList.remove("hop");void jump.getBoundingClientRect();jump.classList.add("hop")}
+function say(t){bub.textContent=t;bub.classList.add("show");clearTimeout(bt);bt=setTimeout(function(){bub.classList.remove("show")},2600)}
+function burst(x,y){for(var i=0;i<9;i++){(function(){var e=document.createElement("span"),a=Math.random()*6.28,v=50+Math.random()*100;e.textContent=["💖","✨","🧵"][i%3];e.style.cssText="position:fixed;left:"+x+"px;top:"+y+"px;z-index:9;pointer-events:none;font-size:"+(14+Math.random()*14)+"px";document.body.appendChild(e);
+e.animate([{transform:"translate(-50%,-50%) scale(.4)",opacity:1},{transform:"translate(calc(-50% + "+Math.cos(a)*v+"px),calc(-50% + "+(Math.sin(a)*v-60)+"px)) scale(1)",opacity:0}],{duration:900+Math.random()*400,easing:"cubic-bezier(.2,.8,.3,1)"}).onfinish=function(){e.remove()}})()}}
+document.getElementById("stage").addEventListener("click",function(e){hop();say(MSG[mi++%MSG.length]);burst(e.clientX,e.clientY)});
+document.getElementById("stage").addEventListener("keydown",function(e){if(e.key=="Enter"||e.key==" "){e.preventDefault();hop();say(MSG[mi++%MSG.length])}});
+function tog(id,fn){var b=document.getElementById(id);b.onclick=function(e){e.stopPropagation();var on=b.getAttribute("aria-pressed")!="true";b.setAttribute("aria-pressed",on);fn(on,b)}}
+tog("tg",function(on,b){svg.classList.toggle("k-still",on);b.textContent=on?"▶ Lanjut melambai":"⏸ Hentikan lambaian"});
+tog("fl",function(on){app.classList.toggle("flip",on)});
+tog("db",function(on){svg.classList.toggle("k-dbg",on)});
+document.getElementById("hp").onclick=function(e){e.stopPropagation();hop()};
+document.getElementById("sp").oninput=function(){svg.style.setProperty("--spd",this.value)};
+setTimeout(function(){say(MSG[0])},700);setInterval(function(){if(!bub.classList.contains("show"))say(MSG[mi++%MSG.length])},8000);
+</script>
+</body>
+</html>

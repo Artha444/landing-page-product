@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Kumiko_Shoppu – Boneka Flanel Custom Handcrafted</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600&family=Fredoka:wght@500;600;700&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#FDFBF7;--surface:#fff;--ink:#2C2C2C;--muted:#625c56;--rose:#E8999C;--rose-d:#b4545a;--rose-bg:#fbe6e6;--sage:#9CAF88;--sage-bg:#e6eddd;--butter:#f8e9b8;--line:#eadfd0;--stitch:rgba(44,44,44,.35);--grain:.07;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#1e1b19;--surface:#2a2623;--ink:#f4efe9;--muted:#bbb2a8;--rose-d:#f0aeb0;--rose-bg:#432c2d;--sage-bg:#2c3427;--butter:#4a4126;--line:#3d3631;--stitch:rgba(255,255,255,.35);--grain:.12;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#1e1b19;--surface:#2a2623;--ink:#f4efe9;--muted:#bbb2a8;--rose-d:#f0aeb0;--rose-bg:#432c2d;--sage-bg:#2c3427;--butter:#4a4126;--line:#3d3631;--stitch:rgba(255,255,255,.35);--grain:.12;color-scheme:dark}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:calc(env(safe-area-inset-top,0px) + 76px)}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.7 Nunito,system-ui,sans-serif;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:50;opacity:var(--grain);background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 .4 0 0 0 0 .3 0 0 0 0 .25 0 0 0 1.2 -.1'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+h1,h2,h3{font-family:Fredoka,system-ui,sans-serif;font-weight:600;line-height:1.12;margin:0 0 .5em;letter-spacing:-.01em}
+h1{font-size:clamp(2.2rem,7vw,4rem)}h2{font-size:clamp(1.7rem,5vw,2.6rem)}h3{font-size:1.2rem}
+p{margin:0 0 1em}a{color:inherit}
+.wrap{max-width:1080px;margin:0 auto;padding:0 20px;position:relative}
+section{padding:72px 0;position:relative}
+.hand{font-family:Caveat,cursive;font-size:1.45rem;color:var(--rose-d);line-height:1.1}
+.stitch{outline:2px dashed var(--stitch);outline-offset:-9px}
+
+header{position:sticky;top:0;z-index:30;padding:calc(env(safe-area-inset-top,0px) + 10px) 14px 0}
+.bar{max-width:1080px;margin:0 auto;display:flex;align-items:center;gap:14px;padding:8px 10px 8px 14px;border-radius:999px;background:color-mix(in srgb,var(--surface) 90%,transparent);backdrop-filter:blur(10px);border:2px dashed var(--stitch);box-shadow:0 6px 20px rgba(120,80,60,.08)}
+.logo{font:700 1.1rem Fredoka;text-decoration:none;margin-right:auto;display:flex;align-items:center;gap:8px}
+.logo i{width:28px;height:28px;border-radius:50%;background:var(--rose);display:grid;place-items:center;font-style:normal;font-size:.9rem}
+nav{display:flex;gap:4px}nav a{text-decoration:none;font-weight:700;font-size:.9rem;padding:6px 12px;border-radius:999px;color:var(--muted)}nav a:hover{background:var(--rose-bg);color:var(--rose-d)}
+@media(max-width:700px){nav{display:none}}
+
+.btn{position:relative;display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:50px;padding:0 26px;border-radius:999px;font:600 1rem Fredoka;text-decoration:none;border:0;cursor:pointer;transition:transform .2s,box-shadow .2s;color:#2C2C2C}
+.btn::after{content:"";position:absolute;inset:4px;border-radius:999px;border:2px dashed rgba(44,44,44,.4);pointer-events:none}
+.btn:hover,.btn:focus-visible{transform:translateY(-3px) rotate(-1deg);box-shadow:0 10px 20px rgba(232,153,156,.4)}
+.btn.p{background:var(--rose)}.btn.s{background:var(--sage)}.btn.sm{min-height:40px;padding:0 18px;font-size:.9rem}.btn.sm::after{inset:3px}
+:focus-visible{outline:3px solid var(--rose-d);outline-offset:3px}
+
+.hero{display:grid;gap:36px;align-items:center;padding-top:40px}
+@media(min-width:860px){.hero{grid-template-columns:1.05fr .95fr;gap:56px}}
+.lead{font-size:1.15rem;color:var(--muted);max-width:44ch}
+.cta{display:flex;flex-wrap:wrap;gap:12px;margin:24px 0}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chips span{background:var(--surface);border:1.5px solid var(--line);border-radius:999px;padding:4px 14px;font-weight:700;font-size:.85rem}
+.deco{position:absolute;pointer-events:none;opacity:.9}
+.d1{width:58px;top:-6px;right:6%;transform:rotate(14deg)}.d2{width:44px;left:-8px;bottom:28%;transform:rotate(-12deg)}.d3{width:50px;right:-4px;bottom:6%;transform:rotate(8deg)}
+@media(max-width:860px){.d2{display:none}}
+
+.table{background:var(--butter);border-radius:36px;padding:22px;position:relative;box-shadow:0 18px 40px rgba(120,80,60,.12)}
+.table .tag{position:absolute;top:-14px;left:22px;background:var(--rose);padding:2px 14px;border-radius:10px;font:600 .85rem Fredoka;transform:rotate(-4deg);color:#2C2C2C;z-index:2}
+.mika{position:relative;aspect-ratio:5/5.2;border-radius:24px;background:linear-gradient(135deg,rgba(255,255,255,.75),rgba(255,255,255,.3));border:3px solid rgba(255,255,255,.9);display:grid;place-items:center;padding:14px 14px 10px;overflow:hidden;max-height:340px;margin:0 auto}
+.mika::after{content:"";position:absolute;top:-20%;left:8%;width:22%;height:150%;background:rgba(255,255,255,.4);transform:rotate(18deg);pointer-events:none}
+.mika svg{height:100%;width:auto;position:relative;z-index:1}
+.mika.pop svg{animation:pop .45s cubic-bezier(.3,1.6,.5,1)}
+@keyframes pop{from{transform:scale(.86) rotate(-3deg)}to{transform:none}}
+.ctl{margin-top:14px}.ctl>span{display:block;font:600 .9rem Fredoka;margin-bottom:6px}
+.opts{display:flex;flex-wrap:wrap;gap:8px}
+.opts button{border:2px solid transparent;background:var(--surface);color:var(--ink);border-radius:999px;padding:5px 14px;font:700 .85rem Nunito;cursor:pointer;transition:transform .15s}
+.opts button:hover{transform:translateY(-2px)}
+.opts button[aria-pressed="true"]{border-color:var(--ink);background:var(--sage)}
+.opts .sw{width:34px;height:34px;padding:0;border-radius:50%;border:2px solid var(--surface);box-shadow:0 0 0 1px var(--line)}
+.opts .sw[aria-pressed="true"]{box-shadow:0 0 0 3px var(--ink)}
+input[type=text]{width:100%;min-height:44px;border:2px dashed var(--stitch);border-radius:16px;padding:0 14px;font:inherit;background:var(--surface);color:var(--ink)}
+.table .btn{width:100%;margin-top:16px}
+
+.alt{background:var(--sage-bg)}
+.alt::before,.alt::after{content:"";position:absolute;left:0;right:0;height:12px}
+.alt::before{top:-11px;background:radial-gradient(circle at 14px 12px,var(--sage-bg) 12px,transparent 13px) 0 0/28px 12px repeat-x}
+.alt::after{bottom:-11px;background:radial-gradient(circle at 14px 0,var(--sage-bg) 12px,transparent 13px) 0 0/28px 12px repeat-x}
+.vals{display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));margin-top:28px}
+.val{background:var(--surface);border-radius:28px;padding:26px 22px;position:relative}
+.val:nth-child(1){transform:rotate(-1.2deg)}.val:nth-child(2){transform:rotate(.8deg)}.val:nth-child(3){transform:rotate(-.6deg)}.val:nth-child(4){transform:rotate(1.1deg)}
+.val .ic{width:52px;height:52px;border-radius:50%;background:var(--rose-bg);display:grid;place-items:center;font-size:1.5rem;margin-bottom:12px}
+.val:nth-child(even) .ic{background:var(--butter)}
+.val p{margin:0;color:var(--muted);font-size:.95rem}
+
+.head{max-width:560px}.head p{color:var(--muted)}
+.grid{display:grid;gap:18px;grid-template-columns:repeat(2,1fr);margin-top:28px}
+@media(min-width:820px){.grid{grid-template-columns:repeat(3,1fr);gap:26px}}
+.card{border-radius:30px;display:flex;flex-direction:column;overflow:hidden;transition:transform .25s,box-shadow .25s;background:var(--rose-bg);padding:12px}
+.card:nth-child(2){background:var(--sage-bg)}.card:nth-child(3){background:var(--butter)}
+.card:hover{transform:translateY(-6px) rotate(-.8deg);box-shadow:0 16px 30px rgba(120,80,60,.15)}
+.card .mika{aspect-ratio:4/5;max-height:none;padding:12px 12px 6px;border-radius:20px}
+.card .b{padding:14px 6px 6px;display:flex;flex-direction:column;gap:6px;flex:1}.card .b h3{margin:0;font-size:1.05rem}.card .b p{font-size:.88rem;color:var(--muted);margin:0 0 8px;line-height:1.5}.card .b .btn{margin-top:auto}
+.specs{display:flex;flex-wrap:wrap;gap:12px;margin-top:36px}
+.spec{flex:1 1 200px;background:var(--surface);border:2px dashed var(--stitch);border-radius:22px;padding:14px 18px}.spec b{display:block;font:600 1.25rem Fredoka}.spec span{color:var(--muted);font-size:.9rem}
+
+ol.steps{list-style:none;padding:0;margin:32px 0 0;display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));counter-reset:s}
+ol.steps li{counter-increment:s;background:var(--surface);border-radius:26px;padding:22px}
+ol.steps li::before{content:counter(s);display:grid;place-items:center;width:44px;height:44px;border-radius:50%;background:var(--rose);color:#2C2C2C;font:700 1.1rem Fredoka;margin-bottom:12px;outline:2px dashed rgba(44,44,44,.4);outline-offset:-5px}
+ol.steps li:nth-child(even)::before{background:var(--sage)}
+ol.steps h3{margin-bottom:.3em}ol.steps p{margin:0;color:var(--muted);font-size:.93rem}
+
+.score{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin:6px 0 4px}
+.score b{font:700 3rem Fredoka;color:var(--rose-d);line-height:1}.stars{color:#e0a82e;font-size:1.3rem;letter-spacing:3px}
+.notes{display:grid;gap:22px;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));margin-top:30px}
+blockquote{margin:0;background:var(--butter);padding:34px 22px 20px;border-radius:8px 8px 26px 26px;position:relative}
+blockquote::before{content:"";position:absolute;top:12px;left:50%;width:14px;height:14px;margin-left:-7px;border-radius:50%;background:var(--bg);box-shadow:inset 0 2px 3px rgba(0,0,0,.2)}
+blockquote:nth-child(1){transform:rotate(-1.5deg)}blockquote:nth-child(2){transform:rotate(1deg);background:var(--rose-bg)}blockquote:nth-child(3){transform:rotate(-.7deg);background:var(--sage-bg)}
+blockquote p{margin:0 0 10px}blockquote footer{font:600 .95rem Fredoka;color:var(--muted)}
+.note{font-size:.82rem;color:var(--muted);margin-top:22px}
+
+.final{text-align:center;background:var(--sage);color:#2C2C2C;border-radius:44px;padding:60px 24px;position:relative}
+.final p{max-width:46ch;margin:0 auto 1em}.final .cta{justify-content:center}
+.final .btn.s{background:var(--bg)}
+.foot{text-align:center;color:var(--muted);font-size:.85rem;padding:12px 20px calc(36px + env(safe-area-inset-bottom,0px))}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+<symbol id="star" viewBox="0 0 60 60"><path d="M30 4l7 16 17 2-13 11 4 17-15-9-15 9 4-17L6 22l17-2z" fill="#f4cf6a"/><path d="M30 12l5 11 12 1-9 8 3 12-11-6-11 6 3-12-9-8 12-1z" fill="none" stroke="#2C2C2C" stroke-opacity=".35" stroke-width="2" stroke-dasharray="3 3"/></symbol>
+<symbol id="heart" viewBox="0 0 60 60"><path d="M30 52C8 36 6 20 16 13c7-5 13-1 14 5 1-6 7-10 14-5 10 7 8 23-14 39z" fill="#E8999C"/><path d="M30 44C15 33 14 23 20 19c5-3 9 0 10 5 1-5 5-8 10-5 6 4 5 14-10 25z" fill="none" stroke="#2C2C2C" stroke-opacity=".35" stroke-width="2" stroke-dasharray="3 3"/></symbol>
+<symbol id="btn" viewBox="0 0 60 60"><circle cx="30" cy="30" r="26" fill="#9CAF88"/><circle cx="30" cy="30" r="19" fill="none" stroke="#2C2C2C" stroke-opacity=".3" stroke-width="2"/><circle cx="23" cy="25" r="3" fill="#2C2C2C" fill-opacity=".6"/><circle cx="37" cy="25" r="3" fill="#2C2C2C" fill-opacity=".6"/><circle cx="23" cy="36" r="3" fill="#2C2C2C" fill-opacity=".6"/><circle cx="37" cy="36" r="3" fill="#2C2C2C" fill-opacity=".6"/></symbol>
+</defs></svg>
+
+<header><div class="bar">
+<a class="logo" href="#beranda"><i>🧵</i>Kumiko_Shoppu</a>
+<nav aria-label="Navigasi utama"><a href="#beranda">Beranda</a><a href="#katalog">Katalog</a><a href="#cara-pesan">Cara Pesan</a><a href="#testimoni">Testimoni</a></nav>
+<a class="btn p sm" data-wa href="#" target="_blank" rel="noopener">Pesan</a>
+</div></header>
+
+<main>
+<section id="beranda" style="padding-top:24px"><div class="wrap hero">
+<svg class="deco d1" aria-hidden="true"><use href="#star"/></svg>
+<svg class="deco d2" aria-hidden="true"><use href="#btn"/></svg>
+<div>
+<p class="hand">dijahit satu per satu dengan cinta ♡</p>
+<h1>Abadikan Momen Spesial Lewat Boneka Flanel Custom Handcrafted</h1>
+<p class="lead">Kado unik, rapi, dan penuh kesan untuk wisuda, ulang tahun, perpisahan, hingga momen anniversary.</p>
+<div class="cta"><a class="btn p" href="#kustom">Bikin Boneka Custom Sekarang</a><a class="btn s" data-shopee href="#" target="_blank" rel="noopener">Lihat Katalog di Shopee</a></div>
+<div class="chips"><span>★ 4,9 di Shopee</span><span>PO 2–4 hari</span><span>Kartu ucapan gratis</span></div>
+</div>
+<div class="table stitch" id="kustom" aria-label="Coba kustomisasi boneka">
+<span class="tag">Coba rancang sendiri</span>
+<div class="mika" id="stage" role="img" aria-label="Pratinjau boneka"></div>
+<div class="ctl"><span>Profesi</span><div class="opts" data-k="job"></div></div>
+<div class="ctl"><span>Warna seragam</span><div class="opts" data-k="color"></div></div>
+<div class="ctl"><span>Gaya rambut</span><div class="opts" data-k="hair"></div></div>
+<div class="ctl"><span>Nama di kartu ucapan</span><input type="text" id="nm" placeholder="Contoh: Untuk Rani" maxlength="40"></div>
+<a class="btn p" id="send" href="#" target="_blank" rel="noopener">Custom via WhatsApp</a>
+</div>
+<svg class="deco d3" aria-hidden="true"><use href="#heart"/></svg>
+</div></section>
+
+<section class="alt"><div class="wrap">
+<div class="head"><h2>Kenapa kado dari Kumiko_Shoppu?</h2><p>Empat hal kecil yang bikin boneka ini terasa istimewa saat dibuka.</p></div>
+<div class="vals">
+<div class="val"><div class="ic">🪡</div><h3>100% handcrafted</h3><p>Dikerjakan dengan jahitan rapi dan bahan flanel premium.</p></div>
+<div class="val"><div class="ic">🎨</div><h3>Bebas kustomisasi</h3><p>Pilih profesi (Polisi, Brimob, Dokter, Wisuda), gaya rambut, hingga warna seragam.</p></div>
+<div class="val"><div class="ic">💌</div><h3>Kartu ucapan gratis</h3><p>Tulis pesan khusus untuk penerima kado.</p></div>
+<div class="val"><div class="ic">📦</div><h3>Proses cepat dan aman</h3><p>Dikemas berlapis agar boneka tiba dalam kondisi sempurna.</p></div>
+</div></div></section>
+
+<section id="katalog"><div class="wrap">
+<div class="head"><h2>Koleksi populer</h2><p>Bingung cari kado yang beda dan bikin dia tersenyum? Hadiahkan karakter boneka flanel yang dibuat khusus mirip sosok tersayangmu.</p></div>
+<div class="grid" id="cat"></div>
+<div class="specs">
+<div class="spec"><b>15–20 cm</b><span>Tinggi boneka</span></div>
+<div class="spec"><b>Kotak akrilik/mika</b><span>Kemasan pelindung</span></div>
+<div class="spec"><b>PO 2–4 hari</b><span>Durasi pengerjaan</span></div>
+</div>
+</div></section>
+
+<section id="cara-pesan" class="alt"><div class="wrap">
+<div class="head"><h2>Cara pesan</h2><p>Empat langkah mudah dari ide sampai kado tiba di tanganmu.</p></div>
+<ol class="steps">
+<li><h3>Pilih desain</h3><p>Tentukan profesi, rambut, dan warna seragam lewat pratinjau di atas.</p></li>
+<li><h3>Kirim lewat WhatsApp</h3><p>Pilihanmu otomatis menjadi pesan siap kirim. Tambahkan foto referensi bila ada.</p></li>
+<li><h3>Konfirmasi dan bayar</h3><p>Kami cek detail pesanan, lalu pengerjaan dimulai setelah pembayaran.</p></li>
+<li><h3>Terima kadonya</h3><p>Boneka dan kartu ucapan dikirim dalam kemasan aman berlapis.</p></li>
+</ol>
+</div></section>
+
+<section id="testimoni"><div class="wrap">
+<div class="head"><h2>Kata mereka yang sudah pesan</h2></div>
+<div class="score"><b>4,9</b><span class="stars" aria-label="Bintang 5">★★★★★</span><span style="color:var(--muted)">rating di Shopee</span></div>
+<div class="notes">
+<blockquote><p>“Jahitannya rapi banget, mirip sama wisudawannya. Pacarku sampai terharu.”</p><footer>Pembeli Shopee A</footer></blockquote>
+<blockquote><p>“Pengemasannya aman, kartu ucapannya manis. Cocok buat kado perpisahan.”</p><footer>Pembeli Shopee B</footer></blockquote>
+<blockquote><p>“Seragamnya detail dan sesuai permintaan. Pasti pesan lagi!”</p><footer>Pembeli Shopee C</footer></blockquote>
+</div>
+<p class="note">Prototipe: ganti dengan ulasan dan foto asli dari Shopee sebelum website dipublikasikan.</p>
+</div></section>
+
+<section style="padding-top:20px"><div class="wrap"><div class="final stitch">
+<h2>Siap membuat kado yang tak terlupakan?</h2>
+<p>Setiap jahitan dibuat dengan teliti dan cinta, jadi setiap kado unik dan tidak ada duanya di dunia.</p>
+<div class="cta"><a class="btn p" data-wa href="#" target="_blank" rel="noopener">Konsultasi Desain via WhatsApp</a><a class="btn s" data-shopee href="#" target="_blank" rel="noopener">Belanja via Shopee</a></div>
+</div></div></section>
+</main>
+<div class="foot">© 2026 Kumiko_Shoppu · Boneka flanel buatan tangan</div>
+
+<script>
+var SHOPEE="https://shopee.co.id/kumiko_shoppu",WA="628xxx";
+function wa(t){return"https://wa.me/"+WA+"?text="+encodeURIComponent(t)}
+var JOBS=["Wisuda","Polisi","Dokter","Brimob"],COLORS={"Hitam":"#3a3a40","Cokelat":"#9a6a48","Putih":"#f6f2ec","Hijau":"#6f8a5e","Biru":"#5a7fb5","Pink":"#E8999C"},HAIRS=["Pendek","Panjang","Kuncir"];
+var st={job:"Wisuda",color:"Hitam",hair:"Pendek"};
+function doll(o){var c=COLORS[o.color],h="#5a3d2e",s="#f6d7b8",g="#e3b94d",d="#33333a",x="",sm='stroke="#fff" stroke-opacity=".7" stroke-width="2" stroke-dasharray="4 4" fill="none"';
+x+='<ellipse cx="70" cy="178" rx="38" ry="6" fill="#000" opacity=".12"/>';
+if(o.hair=="Panjang")x+='<rect x="30" y="34" width="80" height="84" rx="34" fill="'+h+'"/>';
+x+='<rect x="46" y="130" width="20" height="40" rx="10" fill="'+d+'"/><rect x="74" y="130" width="20" height="40" rx="10" fill="'+d+'"/>';
+x+='<rect x="18" y="96" width="22" height="46" rx="11" fill="'+c+'" transform="rotate(14 29 100)"/><rect x="100" y="96" width="22" height="46" rx="11" fill="'+c+'" transform="rotate(-14 111 100)"/>';
+x+='<circle cx="22" cy="140" r="9" fill="'+s+'"/><circle cx="118" cy="140" r="9" fill="'+s+'"/>';
+x+='<rect x="34" y="92" width="72" height="58" rx="24" fill="'+c+'"/><rect x="40" y="98" width="60" height="46" rx="18" '+sm+'/>';
+if(o.job=="Dokter")x+='<path d="M54 94q-4 30 16 32q20-2 16-32" fill="none" stroke="#555" stroke-width="3.5" stroke-linecap="round"/><circle cx="70" cy="128" r="6" fill="#bbb" stroke="#555" stroke-width="2"/>';
+if(o.job=="Polisi"){x+='<rect x="56" y="104" width="12" height="8" rx="2" fill="'+g+'"/><rect x="38" y="94" width="14" height="6" rx="3" fill="'+g+'"/><rect x="88" y="94" width="14" height="6" rx="3" fill="'+g+'"/><rect x="76" y="108" width="16" height="6" rx="2" fill="#fff" opacity=".85"/>'}
+if(o.job=="Brimob")x+='<rect x="46" y="106" width="18" height="16" rx="3" fill="'+d+'" opacity=".55"/><rect x="76" y="106" width="18" height="16" rx="3" fill="'+d+'" opacity=".55"/><rect x="62" y="130" width="16" height="6" rx="2" fill="'+g+'"/>';
+if(o.job=="Wisuda")x+='<path d="M70 92v50" stroke="#fff" stroke-opacity=".5" stroke-width="2"/><path d="M60 92l10 14 10-14" fill="#fff" opacity=".9"/>';
+if(o.hair=="Kuncir")x+='<circle cx="70" cy="16" r="14" fill="'+h+'"/><path d="M58 24l-8-6v12zM82 24l8-6v12z" fill="#E8999C"/>';
+x+='<circle cx="70" cy="62" r="40" fill="'+s+'"/>';
+x+='<path d="M30 62C28 30 48 16 70 16S112 30 110 62C98 46 86 40 70 40S42 46 30 62Z" fill="'+h+'"/>';
+x+='<circle cx="54" cy="68" r="5" fill="#2C2C2C"/><circle cx="86" cy="68" r="5" fill="#2C2C2C"/><circle cx="52.5" cy="66" r="1.6" fill="#fff"/><circle cx="84.5" cy="66" r="1.6" fill="#fff"/>';
+x+='<ellipse cx="44" cy="80" rx="7" ry="4.5" fill="#E8999C" opacity=".7"/><ellipse cx="96" cy="80" rx="7" ry="4.5" fill="#E8999C" opacity=".7"/>';
+x+='<path d="M63 80q7 6 14 0" fill="none" stroke="#2C2C2C" stroke-width="2.4" stroke-linecap="round" stroke-dasharray="3 3"/>';
+if(o.job=="Wisuda")x+='<rect x="48" y="24" width="44" height="14" rx="5" fill="'+d+'"/><polygon points="70,6 118,22 70,38 22,22" fill="'+d+'"/><path d="M112 24v26" stroke="'+g+'" stroke-width="3"/><circle cx="112" cy="52" r="5" fill="'+g+'"/>';
+if(o.job=="Polisi")x+='<path d="M32 40Q70 -2 108 40Z" fill="'+d+'"/><rect x="28" y="36" width="84" height="9" rx="4.5" fill="'+d+'"/><circle cx="70" cy="26" r="6" fill="'+g+'"/>';
+if(o.job=="Brimob")x+='<ellipse cx="66" cy="28" rx="46" ry="16" fill="'+d+'" transform="rotate(-8 66 28)"/><circle cx="46" cy="30" r="5" fill="'+g+'"/>';
+if(o.job=="Dokter")x+='<path d="M30 46Q70 -4 110 46Q70 36 30 46Z" fill="#cfe9e3"/><path d="M70 14v14M63 21h14" stroke="#E8999C" stroke-width="4" stroke-linecap="round"/>';
+return'<svg viewBox="0 0 140 186" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">'+x+'</svg>'}
+function draw(){var m=document.getElementById("stage");m.innerHTML=doll(st);m.classList.remove("pop");void m.offsetWidth;m.classList.add("pop");
+document.querySelectorAll(".opts").forEach(function(g){g.querySelectorAll("button").forEach(function(b){b.setAttribute("aria-pressed",st[g.dataset.k]==b.dataset.v)})});upd()}
+function upd(){var n=document.getElementById("nm").value.trim();
+document.getElementById("send").href=wa("Halo Kumiko Shoppu, saya ingin pesan boneka custom. Profesi: "+st.job+", warna seragam: "+st.color+", gaya rambut: "+st.hair+(n?", nama di kartu ucapan: "+n:"")+".")}
+document.querySelectorAll(".opts").forEach(function(g){var k=g.dataset.k,L=k=="job"?JOBS:k=="hair"?HAIRS:Object.keys(COLORS);
+L.forEach(function(v){var b=document.createElement("button");b.type="button";b.dataset.v=v;
+if(k=="color"){b.className="sw";b.style.background=COLORS[v];b.setAttribute("aria-label",v)}else b.textContent=v;
+b.onclick=function(){st[k]=v;draw()};g.appendChild(b)})});
+document.getElementById("nm").oninput=upd;
+var CAT=[{t:"Koleksi Wisuda",d:"Toga, topi, dan senyum kelulusan.",o:{job:"Wisuda",color:"Hitam",hair:"Panjang"}},{t:"Koleksi Profesi TNI/Polri",d:"Seragam detail untuk sang pengabdi negara.",o:{job:"Polisi",color:"Cokelat",hair:"Pendek"}},{t:"Koleksi Pasangan",d:"Sepasang kenangan untuk anniversary.",o:{job:"Dokter",color:"Pink",hair:"Kuncir"}}];
+document.getElementById("cat").innerHTML=CAT.map(function(c){return'<article class="card"><div class="mika">'+doll(c.o)+'</div><div class="b"><h3>'+c.t+'</h3><p>'+c.d+'</p><a class="btn p sm" href="'+SHOPEE+'" target="_blank" rel="noopener">Beli di Shopee</a></div></article>'}).join("");
+document.querySelectorAll("[data-shopee]").forEach(function(a){a.href=SHOPEE});
+document.querySelectorAll("[data-wa]").forEach(function(a){a.href=wa("Halo Kumiko Shoppu, saya ingin pesan boneka custom")});
+draw();
+</script>
+</body>
+</html>
